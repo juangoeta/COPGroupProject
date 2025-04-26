@@ -9,7 +9,7 @@ This is a JavaFX application for managing a library's book collection. The syste
 - Associate books with authors
 
 ## Project Structure
-- `src/main/java/Main.java` - Contains the main application code
+- `src/main/java/LibraryBookManager.java` - Contains the main application code
 - The project uses JavaFX for the UI and MySQL for the database
 
 ## Database Setup
@@ -79,7 +79,7 @@ String password = "your_password";
 2. Open the project in your preferred IDE (IntelliJ IDEA or Eclipse recommended)
 3. Make sure the database is set up and running
 4. Update the database credentials in `DatabaseManager` class if needed
-5. Run the `Main` class
+5. Run `mvn javafx:run` from the command line or run the `LibraryBookManager` class from your IDE
 
 ## Features
 - View all books in a table format
