@@ -16,21 +16,32 @@
  * - Managed the UI layout and styling
  */
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
 import javafx.application.Application;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.scene.control.cell.PropertyValueFactory;
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 
 /**
  * Represents an author in the library system.
@@ -239,7 +250,7 @@ class DatabaseManager {
  * Main application class for the Library Book Manager.
  * Implements a JavaFX application with a GUI for managing books in a library.
  */
-public class Main extends Application {
+public class LibraryBookManager extends Application {
     private TableView<Book> bookTable;
     private TextField titleField;
     private ComboBox<Author> authorComboBox;
@@ -298,7 +309,7 @@ public class Main extends Application {
         yearCol.setPrefWidth(200);
         
         bookTable.getColumns().addAll(titleCol, authorCol, yearCol);
-        bookTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
+        bookTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         bookTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             selectedBook = newSelection;
